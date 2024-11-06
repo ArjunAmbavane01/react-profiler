@@ -12,10 +12,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout contacts={contacts}/>}>
-            {/* {contacts.map((contact,index)=>{
-              return <Route key={index} path={`/contact/${contact._id}`} element={<Profile />}/>
-            })} */}
-            <Route path={`/`} element={<Profile />}></Route>
+            {contacts.map((contact,index)=>{
+              return <Route key={index} path={`/contacts/${contact._id}`} element={<Profile userId={contact._id}/>}/>
+            })}
           </Route>
         </Routes>
       </BrowserRouter>

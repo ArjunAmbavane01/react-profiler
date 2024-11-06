@@ -1,0 +1,63 @@
+[
+    {
+      "username": "john_doe",
+      "linkedinUrl": "https://www.linkedin.com/in/john-doe",
+      "avatarUrl": "https://example.com/avatars/john_doe.png",
+      "description": "Full Stack Developer with experience in React and Node.js."
+    },
+    {
+      "username": "sarah_smith",
+      "linkedinUrl": "https://www.linkedin.com/in/sarah-smith",
+      "avatarUrl": "https://example.com/avatars/sarah_smith.png",
+      "description": "Product Manager specializing in Agile methodologies and UX design."
+    },
+    {
+      "username": "michael_jones",
+      "linkedinUrl": "https://www.linkedin.com/in/michael-jones",
+      "avatarUrl": "https://example.com/avatars/michael_jones.png",
+      "description": "Data Scientist with a focus on machine learning and statistical analysis."
+    },
+    {
+      "username": "emily_brown",
+      "linkedinUrl": "https://www.linkedin.com/in/emily-brown",
+      "avatarUrl": "https://example.com/avatars/emily_brown.png",
+      "description": "Software Engineer passionate about backend development and cloud solutions."
+    },
+    {
+      "username": "james_wilson",
+      "linkedinUrl": "https://www.linkedin.com/in/james-wilson",
+      "avatarUrl": "https://example.com/avatars/james_wilson.png",
+      "description": "Web Developer with experience in HTML, CSS, and JavaScript frameworks."
+    },
+    {
+      "username": "olivia_taylor",
+      "linkedinUrl": "https://www.linkedin.com/in/olivia-taylor",
+      "avatarUrl": "https://example.com/avatars/olivia_taylor.png",
+      "description": "UI/UX Designer with expertise in design systems and wireframing."
+    },
+    {
+      "username": "david_miller",
+      "linkedinUrl": "https://www.linkedin.com/in/david-miller",
+      "avatarUrl": "https://example.com/avatars/david_miller.png",
+      "description": "Business Analyst with a background in data analysis and reporting."
+    },
+    {
+      "username": "linda_davis",
+      "linkedinUrl": "https://www.linkedin.com/in/linda-davis",
+      "avatarUrl": "https://example.com/avatars/linda_davis.png",
+      "description": "Marketing Manager with a passion for digital marketing strategies."
+    },
+    {
+      "username": "robert_martin",
+      "linkedinUrl": "https://www.linkedin.com/in/robert-martin",
+      "avatarUrl": "https://example.com/avatars/robert_martin.png",
+      "description": "Software Architect with experience in designing scalable enterprise applications."
+    },
+    {
+      "username": "isabella_white",
+      "linkedinUrl": "https://www.linkedin.com/in/isabella-white",
+      "avatarUrl": "https://example.com/avatars/isabella_white.png",
+      "description": "AI Specialist focusing on deep learning and natural language processing."
+    }
+  ]
+  

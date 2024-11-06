@@ -1,6 +1,11 @@
-const Contact = ({name}) => {
+import {useNavigate} from 'react-router-dom'
+
+const Contact = ({name,userId}) => {
+
+    const navigate = useNavigate();
+
     return <>
-    <div className="contact-container">
+    <div className="contact-container" onClick={()=> navigate(`/contacts/${userId}`)}>
         {name}
     </div>
     </>

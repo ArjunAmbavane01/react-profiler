@@ -17,7 +17,7 @@ app.get('/contacts', async (req, res) => {
     try {
         const users = await User.find({});
         console.log(users)
-        res.status(200).json({
+        return res.status(200).json({
             type: "success",
             users
         })
@@ -40,7 +40,7 @@ app.post('/contacts', async (req, res) => {
             avatarUrl,
             description
         })
-        res.status(200).json({
+        return res.status(200).json({
             type: "success",
             message: "User created successfully",
         })
@@ -55,7 +55,26 @@ app.post('/contacts', async (req, res) => {
 })
 
 app.get('/contacts/:id', async (req,res)=>{
-
+    try{
+        const userId = req.params.id;
+        const user = await User.find({_id:userId});
+        if(user){
+            return res.status(200).json({
+            type:"success",
+                user
+            })
+        }
+        return res.json(200).json({
+            type:"success",
+            message:"No user found"
+        })
+    } catch(e){
+        res.status(500).json({
+            type: "error",
+            message: "Some error occurred",
+            error: e.message
+        })
+    }
 })
 
 app.patch('/contacts/:id',async (req,res)=>{
