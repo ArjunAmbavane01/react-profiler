@@ -11,12 +11,11 @@ const connectDB = async () => {
 connectDB();
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json());    
 
 app.get('/contacts', async (req, res) => {
     try {
         const users = await User.find({});
-        console.log(users)
         return res.status(200).json({
             type: "success",
             users
@@ -57,7 +56,7 @@ app.post('/contacts', async (req, res) => {
 app.get('/contacts/:id', async (req,res)=>{
     try{
         const userId = req.params.id;
-        const user = await User.find({_id:userId});
+        const user = await User.findOne({_id:userId});
         if(user){
             return res.status(200).json({
             type:"success",

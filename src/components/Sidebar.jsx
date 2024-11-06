@@ -11,9 +11,8 @@ const Sidebar = ({ contacts }) => {
   }, [contacts]);
 
   const displayContacts = () => {
-    console.log("hi");
     const filteredContacts = contacts.filter((contact) => {
-      const username = contact.username
+      const username = contact.username;
       return username.startsWith(inputRef.current.value);
     });
     console.log(dispContacts);
@@ -37,11 +36,23 @@ const Sidebar = ({ contacts }) => {
         <button className="addBtn">Add</button>
       </div>
       <div className="sidebar-body">
-        {console.log(contacts)}
-        {dispContacts ? dispContacts.map((contact,index) => {
-          // return <Contact key={index} name={contact.username}></Contact>;
-          return <Contact key={index} name={contact.name} userId={contact._id}></Contact>;
-        }) : "Fetching Contacts"}
+        {dispContacts ? (
+          dispContacts.length == 0 ? (
+            <div className="no-contacts">No Contacts</div>
+          ) : (
+            dispContacts.map((contact, index) => {
+              return (
+                <Contact
+                  key={index}
+                  name={contact.username}
+                  userId={contact._id}
+                ></Contact>
+              );
+            })
+          )
+        ) : (
+          "Fetching Contacts"
+        )}
       </div>
     </div>
   );
