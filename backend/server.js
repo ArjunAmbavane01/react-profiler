@@ -1,6 +1,7 @@
 import express from 'express'
 import User from './User.js'
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 
 const connectDB = async () => {
@@ -9,18 +10,16 @@ const connectDB = async () => {
 }
 connectDB();
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.get('/contacts', async (req, res) => {
     try {
         const users = await User.find({});
-        let usernameList = [];
-        if (users.length != 0) {
-            usernameList = users.map((user) => user.userName);
-        }
+        console.log(users)
         res.status(200).json({
             type: "success",
-            usernameList
+            users
         })
     } catch (e) {
         res.status(500).json({
@@ -60,7 +59,7 @@ app.get('/contacts/:id', async (req,res)=>{
 })
 
 app.patch('/contacts/:id',async (req,res)=>{
-    
+
 })
 
 app.delete('/contacts/:id', async (req,res)=>{
