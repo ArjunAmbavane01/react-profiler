@@ -76,12 +76,23 @@ app.get('/contacts/:id', async (req,res)=>{
     }
 })
 
-app.patch('/contacts/:id',async (req,res)=>{
-
-})
-
 app.delete('/contacts/:id', async (req,res)=>{
-
+    try{
+        const {userId} = req.body;
+        await User.deleteOne({_id:userId});
+        const updatedContacts = await User.find({});
+        return res.status(200).json({
+            type: "success",
+            message: "User Deleted Successfully",
+            contacts: updatedContacts
+        })
+    } catch(e){
+        res.status(500).json({
+            type:"error",
+            message:"Some Error Occurred",
+            error:e.message
+        })
+    }
 })
 
 app.listen(3000, () => {

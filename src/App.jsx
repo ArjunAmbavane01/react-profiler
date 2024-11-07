@@ -5,8 +5,8 @@ import Profile from "./components/Profile";
 import useFetch from "./hooks/useFetch.js";
 
 function App() {
-  const respMsg = useFetch("http://localhost:3000/contacts");
-  const contacts = respMsg.data.users || [];
+  const { data, setData } = useFetch("http://localhost:3000/contacts");
+  const contacts = data?.users || [];
   return (
     <>
       <BrowserRouter>
@@ -17,7 +17,7 @@ function App() {
                 <Route
                   key={index}
                   path={`/contacts/${contact._id}`}
-                  element={<Profile userId={contact._id} />}
+                  element={<Profile userId={contact._id} setContacts={setData} />}
                 />
               );
             })}
