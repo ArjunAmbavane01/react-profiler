@@ -2,29 +2,48 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile";
-import useFetch from "./hooks/useFetch.js";
+import { useEffect, useState } from "react";
 
 function App() {
-  const { data, setData } = useFetch("http://localhost:3000/contacts");
-  const contacts = data?.users || [];
+  const [contacts, setContacts] = useState([]);
+
+  const getContacts = async () => {
+    try {
+      const resp = await fetch("http://localhost:3000/contacts");
+      const data = await resp.json();
+      if (data.type === "success") {
+        setContacts(data.users);
+      } else {
+        console.log("Bad response " + data.error);
+      }
+    } catch (e) {
+      console.log("Error occurred while fetching contacts " + e.message);
+    }
+  };
+
+  useEffect(() => {
+    getContacts();
+  }, []);
+
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout contacts={contacts} />}>
-            {contacts.map((contact, index) => {
-              return (
-                <Route
-                  key={index}
-                  path={`/contacts/${contact._id}`}
-                  element={<Profile userId={contact._id} setContacts={setData} />}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout contacts={contacts} />}>
+          {contacts.map((contact, index) => (
+            <Route
+              key={index}
+              path={`/contacts/${contact._id}`}
+              element={
+                <Profile
+                  userId={contact._id}
+                  setContacts={setContacts}
                 />
-              );
-            })}
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+              }
+            />
+          ))}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Profile = ({ userId,setContacts }) => {
+const Profile = ({ userId,setContacts  }) => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
   const [imgLoading, setImgLoading] = useState(true);
@@ -11,25 +11,36 @@ const Profile = ({ userId,setContacts }) => {
     `http://localhost:3000/contacts/${userId}`
   );
 
+  const handleDelete = async () => {
+    try {
+      const resp = await fetch(`http://localhost:3000/contacts/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId }),
+      });
+      const data = await resp.json();
+
+      if (data.type === "success") {
+        setContacts(data.contacts); 
+        alert("Contact deleted successfully!");
+        navigate("/"); 
+      } else {
+        console.log("Failed to delete contact: " + data.error);
+      }
+    } catch (e) {
+      console.log("Error deleting contact: " + e.message);
+    }
+  };
+
   useEffect(() => {
     if (userData && userData.user) {
       setUser(userData.user);
     }
   }, [userData]);
 
-  const deleteContact = async () => {
-    const resp = await fetch(`http://localhost:3000/contacts/${userId}`,{
-      method:'DELETE',
-      body:{
-        userId
-      }
-    });
-    const respMsg = await resp.json();
-    console.log(respMsg)
-    setContacts(respMsg.contacts)
-    navigate('/')
-    alert(respMsg);
-  }
+  
 
   return (
     <>
@@ -51,7 +62,7 @@ const Profile = ({ userId,setContacts }) => {
               <h1>{user.username}</h1>
               <a href={user.linkedinUrl}>LinkedIn Link</a>
               <p>{user.description}</p>
-              <button id="deleteBtn" onClick={deleteContact}>Delete</button>
+              <button id="deleteBtn" onClick={handleDelete}>Delete</button>
             </div>
           </div>
         )}
