@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile";
+import AddContact from "./components/AddContact";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout contacts={contacts} />}>
+        <Route path="/add-contact" element={<AddContact contacts={contacts} setContacts={setContacts} />} />
           {contacts.map((contact, index) => (
             <Route
               key={index}

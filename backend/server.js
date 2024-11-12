@@ -29,19 +29,20 @@ app.get('/contacts', async (req, res) => {
     }
 });
 
-app.post('/contacts', async (req, res) => {
+app.post('/add-contact', async (req, res) => {
     try {
-        const { firstname,lastName, linkedinUrl, avatarUrl,description } = req.body;
-        const userName = firstname + " " + lastName
-        await User.create({
-            userName,
+        const { username, linkedinUrl, avatarUrl,description } = req.body;
+        const user = await User.create({
+            username,
             linkedinUrl,
             avatarUrl,
             description
         })
+        console.log(user)
         return res.status(200).json({
             type: "success",
             message: "User created successfully",
+            user
         })
 
     } catch (e) {

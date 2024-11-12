@@ -1,19 +1,25 @@
 import { useState, useEffect, useRef } from "react";
 import Contact from "./Contact";
 import { Search } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ contacts }) => {
   const [dispContacts, setDispContacts] = useState([]);
   const inputRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setDispContacts(contacts);
   }, [contacts]);
 
+  const handleAddClick = () =>{
+    navigate('/add-contact')
+  }
+
   const displayContacts = () => {
     const filteredContacts = contacts.filter((contact) => {
-      const username = contact.username;
-      return username.startsWith(inputRef.current.value);
+      const username = contact.username.toLowerCase();
+      return username.startsWith(inputRef.current.value.toLowerCase());
     });
     console.log(dispContacts);
     setDispContacts(filteredContacts);
@@ -33,7 +39,7 @@ const Sidebar = ({ contacts }) => {
             placeholder="Search"
           />
         </div>
-        <button className="addBtn">Add</button>
+        <button className="addBtn" onClick={handleAddClick}>Add</button>
       </div>
       <div className="sidebar-body">
         {dispContacts ? (
