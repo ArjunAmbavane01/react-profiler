@@ -1,5 +1,6 @@
 *{
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
 }
 .no-contacts {
   text-align: center;
@@ -15,6 +16,10 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+}
+
+.right{
+  width: 100%;
 }
 
 .sidebar-container{
@@ -109,8 +114,8 @@
 }
 
 .img-container {
-  width: 250px;
-  height: 250px;
+  width: 175px;
+  height: 175px;
   flex-shrink: 0;
   border-radius: 8px;
   overflow: hidden; 
@@ -141,24 +146,6 @@
   font-size: 18px;
 }
 
-#editBtn{
-  padding: 10px;
-  width: 80px;
-  height: 44px;
-  font-size: medium;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  border: none;
-  background-color: #feffff;
-  color: #6b9ae4;
-  margin-right: 10px;
-}
-
-#editBtn:hover{
-  color: #feffff;
-  background-color: #6b9ae4;
-  transition-duration: 0.3s;
-}
 
 #deleteBtn{
   padding: 10px;
@@ -168,13 +155,101 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   border: none;
-  background-color: #feffff;
-  color: #d76469;
+  background-color: #d76469;
+  color: #feffff;
   margin-right: 10px;
 }
 
 #deleteBtn:hover{
-  color: #feffff;
-  background-color: #d76469;
+  color: #d76469;
+  background-color: #feffff;
   transition-duration: 0.3s;
+}
+
+.form-header{
+  width: 100%;
+  height: 50px;
+  margin-top: 30px;
+  font-size: 25px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-body{
+  padding: 10px;
+  width: 100%;
+}
+form{
+  margin: auto;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+}
+
+label{
+  margin:25px 0 8px 0;
+}
+
+input{
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+input:focus{
+  outline: none;
+}
+
+textarea{
+  resize: none;
+  height: 90px;
+  border-radius: 5px;
+}
+textarea:focus{
+  outline: none;
+}
+
+.submit-contact{
+  height: 40px;
+  margin-top: 20px;
+  background-color: #4e8aea;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  font-size: medium;
+  padding: 5px;
+}
+
+.custom-dropdown {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 80px;
+  row-gap: 15px;
+  padding: 5px;
+  width: 750px;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px
+  /* border-bottom: 1px solid #f0f0f0; */
+}
+
+.dropdown-option img.avatar-img {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.dropdown-option.selected {
+  background-color: #f0f0f0;
+  font-weight: bold;
 }
