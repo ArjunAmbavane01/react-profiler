@@ -30,16 +30,18 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout contacts={contacts} />}>
-        <Route path="/add-contact" element={<AddContact contacts={contacts} setContacts={setContacts} />} />
+          <Route
+            path="/add-contact"
+            element={
+              <AddContact contacts={contacts} setContacts={setContacts} />
+            }
+          />
           {contacts.map((contact, index) => (
             <Route
               key={index}
               path={`/contacts/${contact._id}`}
               element={
-                <Profile
-                  userId={contact._id}
-                  setContacts={setContacts}
-                />
+                <Profile userId={contact._id} setContacts={setContacts} />
               }
             />
           ))}
